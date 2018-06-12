@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import socketIOClient from 'socket.io-client';
 import axios from 'axios';
 
 import List from './List';
