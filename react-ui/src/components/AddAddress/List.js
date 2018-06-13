@@ -1,6 +1,9 @@
 import React from 'react';
+import transactionList from './transactionList.js';
 
 const List = props => {
+  const { txrefs } = props;
+
   return (
     <div>
       Address = {props.address}
@@ -9,6 +12,7 @@ const List = props => {
       <br />
       Final Number Transactions = {props.final_n_tx}
       <br />
+      {txrefs}
       
       
     
