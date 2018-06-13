@@ -9,7 +9,10 @@ class AddAddress extends Component {
   constructor() {
     super();
     this.state = {
-      addresses: []
+      address: '',
+      balance: 0,
+      transactionCount: 0,
+      transactions: []
     }
 
     this.handleClick = this.handleClick.bind(this);
@@ -24,8 +27,9 @@ class AddAddress extends Component {
 
     axios.get(`https://api.blockcypher.com/v1/btc/main/addrs/${btcAddress}`)
       .then(res => {
-        this.setState({addresses: res.data});
-        console.log(res);
+        this.setState({address: res.data.address, balance: res.data.balance, transactionCount: res.data.final_n_tx, transactions: res.data.txrefs});
+        // console.log(this.state.transactions);
+        // console.log(res.data);
       })
       .catch(err => {
         console.log(err);
@@ -39,19 +43,19 @@ class AddAddress extends Component {
   }
 
   render() {
-    const response = this.state.addresses;
   return (
     <div className='add-address'>
     <h1>Bitcoin Address Info</h1>
-    
-    {console.log([this.state.addresses.txrefs])}
-      {this.state.data}
       <List
-      address={this.state.addresses.address}
-      balance={this.state.addresses.balance}
-      final_n_tx={this.state.addresses.final_n_tx}
-      txrefs={this.state.addresses.txrefs}
+      address={this.state.address}
+      balance={this.state.balance}
+      final_n_tx={this.state.transactionCount}
       />
+      <h2>Transactions</h2>
+      <ul>
+        {this.state.transactions.map((item, key) => <li>{(item.value/100000000)}</li>)}
+      </ul>
+
         
        <button onClick={this.handleClick}>Click Me</button>
 

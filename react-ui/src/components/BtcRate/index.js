@@ -9,13 +9,20 @@ class BtcRate extends Component {
     this.state = {
       response: false
     };
+    this.bitcoinRate = this.bitcoinRate.bind(this);
+  }
+
+  bitcoinRate() {
+    const socket = socketIOClient();
+    
+    socket.on('FromAPI', data => {
+      this.setState({ response: data })
+      return data;
+    });
   }
 
   componentDidMount() {
-    const { endpoint } = this.state;
-    const socket = socketIOClient(endpoint);
-    
-    socket.on('FromAPI', data => this.setState({ response: data }));
+    this.bitcoinRate();
   }
 
   render() {
