@@ -1,20 +1,21 @@
+// import { subscribeToTimer } from './api';
 import React, { Component } from 'react';
-
+import socketIOClient from 'socket.io-client';
 import './style.css';
 
 class BtcRate extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      response: false,
-      endpoint: 'http://localhost:5000/api'
+      response: false
     };
   }
 
   componentDidMount() {
     const { endpoint } = this.state;
-    // const socket = socketIOClient(endpoint);
-    // socket.on('FromAPI', data => this.setState({ response: data }));
+    const socket = socketIOClient(endpoint);
+    
+    socket.on('FromAPI', data => this.setState({ response: data }));
   }
 
   render() {
