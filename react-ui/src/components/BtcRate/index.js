@@ -1,24 +1,19 @@
-// import { subscribeToTimer } from './api';
-import React, { Component } from 'react';
+import { Component } from 'react';
 import socketIOClient from 'socket.io-client';
 import './style.css';
 
 class BtcRate extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      response: false
-    };
-    this.bitcoinRate = this.bitcoinRate.bind(this);
+    
+    this.updateBtcRate = this.props.updateBtcRate.bind(this);
   }
 
   bitcoinRate() {
     const socket = socketIOClient();
-    
-    socket.on('FromAPI', data => {
-      this.setState({ response: data })
-      return data;
-    });
+
+    // Send BTC Rate to parent state
+    socket.on('FromAPI', data => this.updateBtcRate(data));
   }
 
   componentDidMount() {
@@ -26,19 +21,8 @@ class BtcRate extends Component {
   }
 
   render() {
-    const { response } = this.state;
-    console.log(response);
-  return (
-    <div className='btc-rate'>
-      <h1>Bitcoin Rate</h1>
-      {response
-      ? <p>
-          {response} 
-        </p>
-        : <p>Loading...</p>}
-    </div>
-  )};
-};
-
+    return false;
+  }
+}
 
 export default BtcRate;

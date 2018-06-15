@@ -1,3 +1,7 @@
+const dotenv = require('dotenv');
+
+dotenv.load();
+
 const express = require('express');
 const path = require('path');
 const index = require('./routes/index');
@@ -6,7 +10,7 @@ const cors = require('cors');
 const http = require('http');
 const socketIo = require('socket.io');
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 const app = express();
 const server = http.createServer(app);
@@ -36,7 +40,7 @@ app.use(index);
 
 io.on('connection', socket => {
   console.log('New client connected'),
-    setInterval(() => getBtcRate(socket), 3000);
+    setInterval(() => getBtcRate(socket), 1000);
   socket.on('disconnect', () => console.log('Client disconnected'));
 });
 
