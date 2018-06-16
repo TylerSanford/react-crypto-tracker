@@ -9,7 +9,7 @@
 }
 
 .App-header {
-  background-color: rgb(248,215,79);
+  background-color: rgb(245,205,79);
   height: 150px;
   padding: 20px;
   color: white;
@@ -24,8 +24,15 @@
 }
 
 .body-container {
-  border: 1px solid yellow;
+  /* border: 1px solid yellow; */
   display:flex;
-  justify-content: center;
-  
+  /* justify-content: center; */
+  flex-direction: column;
+  /* align-content: center; */
+  align-items: center;
+  /* height: 100vh; */
+}
+
+.btc-search-history {
+  border: 1px solid black;
 }

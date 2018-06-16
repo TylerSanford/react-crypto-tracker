@@ -2,7 +2,7 @@ require('dotenv').config({ path: '../.env' });
 
 module.exports = {
   client: 'pg',
-  connection: process.env.DATABASE_URL_DEV,
+  connection: process.env.DATABASE_URL,
   searchPath: ['knex', 'public'],
   useNullAsDefault: true,
   migrations: {
@@ -12,4 +12,6 @@ module.exports = {
   seeds: {
     directory: './database/seeds',
   },
+  ssl: true,
+  debug: true
 };

@@ -16,6 +16,8 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
+// const btcAddressRoutes = require('./routes/btcAddressRoutes');
+
 // app.use(
 //   cors({
 //     credentials: true,
@@ -54,6 +56,8 @@ const getBtcRate = async socket => {
     console.error(`Error: ${error.code}`);
   }
 };
+
+// app.use('/api/btcAddress', btcAddressRoutes);
 
 // Priority serve any static files.
 app.use(express.static(path.resolve(__dirname, '../react-ui/build')));

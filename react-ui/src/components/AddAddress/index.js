@@ -1,27 +1,26 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-// import List from './List';
-
 import './style.css';
 
 class AddAddress extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      address: '',
+      address: ''
     };
 
     this.addBtcAddress = this.props.addBtcAddress.bind(this);
+    this.updateAddressObj = this.props.updateAddressObj.bind(this);
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.btcValidator = this.btcValidator.bind(this);
     this.fetchBtcData = this.fetchBtcData.bind(this);
+    this.addAddressToDb = this.addAddressToDb.bind(this);
   }
 
   btcValidator(address) {
-    // console.log(address);
     if (/^[13][a-km-zA-HJ-NP-Z0-9]{26,33}$/.test(address)) {
       return true;
     } else {
@@ -30,60 +29,60 @@ class AddAddress extends Component {
   }
 
   handleChange(event) {
-    this.setState({address: event.target.value});
+    this.setState({ address: event.target.value });
   }
 
   handleSubmit(event) {
-    // console.log(JSON.stringify(event.target));
-    // console.log(event);
-    
+    // If address is valid bitcoin address
     if (this.btcValidator(this.state.address)) {
+      // Alert Added
       alert('Bitcoin Address Added: ' + this.state.address);
+      // Fetch Btc Data
       this.fetchBtcData(this.state.address);
-      this.setState({address: ''});
+      // Add Btc address to db history
+      this.addAddressToDb(this.state.address);
+      // Reset the address state
+      this.setState({ address: '' });
       event.preventDefault();
     } else {
-      alert("Invalid Bitcoin Address!");
-      this.setState({address: ''});
+      alert('Invalid Bitcoin Address!');
+      this.setState({ address: '' });
       event.preventDefault();
     }
   }
 
   fetchBtcData(btcAddress) {
-    console.log("fetching btc data...");
     axios
       .get(`https://api.blockcypher.com/v1/btc/main/addrs/${btcAddress}`)
       .then(res => {
-        // const newObj = {
-        //   address: res.data.address,
-        //   balance: res.data.balance,
-        //   transactionCount: res.data.final_n_tx,
-        //   transactions: res.data.txrefs
-        // };
-
-        // return JSON.stringify(newObj);
-        this.addBtcAddress(res.data);
-        console.log(res.data);
-        // this.state.addresses.push({addresses: res.data});
-        // console.log("set state addresses", this.state.addresses);
-        // console.log(this.state.transactions);
-        // console.log(res.data);
+        this.updateAddressObj(res.data);
       })
       .catch(err => {
-        console.log(err);
+        console.log('FETCH ERROR!!! ', err);
       });
+  }
 
-      // console.log(this.state.addresses);
+  addAddressToDb(btcAddress) {
+    axios
+      .post(`http://localhost:5000/api/btcAddress/${btcAddress}`)
+      .then(res => {
+        console.log('addAddressToDB Address = ' + btcAddress);
+        this.addBtcAddress(btcAddress);
+      });
   }
 
   render() {
-
     return (
       <div className="add-address">
-      Address State: {this.state.address}
-        <form onSubmit={this.handleSubmit} >
-          <input type="text" value={this.state.address} onChange={this.handleChange} />
-        <input type="submit" value="Submit" />
+        Monitor a Bitcoin address!
+        <form onSubmit={this.handleSubmit}>
+          <input
+            className="add-address-textbox"
+            type="text"
+            value={this.state.address}
+            onChange={this.handleChange}
+          /><br />
+          <input type="submit" value="Submit" />
         </form>
       </div>
     );
