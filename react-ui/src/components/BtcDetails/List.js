@@ -9,7 +9,7 @@ const List = props => {
   const balSatoshi = props.balance;
   const balBtc = balSatoshi / 100000000;
   const balUSD = balBtc * props.btcRate;
-  const balUSDFixed = toFixed(balUSD);
+  const balUSDFixed = Number(toFixed(balUSD)).toLocaleString('en');
 
   return (
     <div className="btc-details">
@@ -18,7 +18,7 @@ const List = props => {
       <br />
       Balance Btc = {balBtc}
       <br />
-      Balance USD - {balUSDFixed}
+      Balance USD - {'$' + balUSDFixed}
       <br />
 
 
@@ -30,29 +30,37 @@ const List = props => {
       <br />
       Unconfirmed Transactions Count: {props.unconfirmed_n_tx}
       <br />
-      {/* <h3>Unconfirmed Transactions</h3>
-      <ol>
+      
+      {props.unconfirmed_n_tx > 0 && 
+        
+        <ol>
+        <h3>Unconfirmed Transactions</h3>
       {props.unconfirmedTransactions.map((item, i) => (
         <li key={i}>
-          {item.value}
+        {item.value} / {item.value / 100000000} /{' '}
+            {'$' + Number((toFixed((item.value / 100000000) * props.btcRate))).toLocaleString('en')}
         </li>
       ))}
-      </ol> */}
+      </ol>
+      
+      }
+      
 
       <h1>Confirmed Info</h1>
       <br />
       Confirmed Transaction Count: {props.final_n_tx}
       <br />
+      {props.final_n_tx > 0 && <ol>
       <h3>Confirmed Transactions</h3>
-      {/* <ol>
         Satoshi / Btc / USD
         {props.transactions.map((item, i) => (
           <li key={i}>
             {item.value} / {item.value / 100000000} /{' '}
-            {'$' + toFixed((item.value / 100000000) * props.btcRate)}
+            {'$' + Number((toFixed((item.value / 100000000) * props.btcRate))).toLocaleString('en')}
           </li>
         ))}
-      </ol> */}
+      </ol>}
+      
     </div>
   );
 };

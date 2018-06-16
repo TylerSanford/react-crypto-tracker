@@ -1,0 +1,8 @@
+.search-history-container {
+  border: 1px solid black;
+}
+
+.history-item {
+  text-decoration: underline;
+  margin-bottom: 5px;
+}

@@ -6,6 +6,7 @@ import axios from 'axios';
 import BtcRate from './components/BtcRate';
 import AddAddress from './components/AddAddress';
 import BtcDetails from './components/BtcDetails';
+import AddressHistoryList from './components/AddressHistoryList';
 
 class App extends Component {
   constructor(props) {
@@ -25,8 +26,18 @@ class App extends Component {
   componentDidMount() {
     // Fill Bitcoin Search History
     axios.get(`/api/btcAddress`).then(res => {
-      res.data.map(item => this.state.addressesArr.push(item.address));
+    // axios.get(`http://localhost:5000/api/btcAddress`).then(res => {
+      const addressesArr = [];
+      res.data.map(item => addressesArr.push(item.address));
+
+      // Callback update global state
+      this.setState({ addressesArr: addressesArr.reverse() });
     });
+  }
+
+  // Callback function to update "global" state of Address Search History
+  updateAddressArr(array) {
+    this.setState({ addressesArr: array });
   }
 
   // Callback function socket.oi update "global" state
@@ -34,6 +45,7 @@ class App extends Component {
     this.setState({ btcRate: rate });
   }
 
+  // Callback function update "global" state of address details object.
   updateAddressObj(obj) {
     this.setState({ addressObj: obj });
     console.log(this.state.addressObj);
@@ -41,7 +53,7 @@ class App extends Component {
 
   // Callback function push added addresses to "global" state
   addBtcAddress(address) {
-    this.state.addressesArr.push(address);
+    this.state.addressesArr.unshift(address);
   }
 
   render() {
@@ -58,22 +70,18 @@ class App extends Component {
             updateAddressObj={this.updateAddressObj}
             addBtcAddress={this.addBtcAddress}
           />
-
-          {this.state.addressObj ? (
-              <BtcDetails
-                addressObj={this.state.addressObj}
-                btcRate={this.state.btcRate}
-              />
-          ) : (
-            console.log('DONT display details')
+          {/* If Object is not empty show details */}
+          {Object.keys(this.state.addressObj).length > 0 && (
+            <BtcDetails
+              addressObj={this.state.addressObj}
+              btcRate={this.state.btcRate}
+            />
           )}
-
-          <div className="btc-search-history">
-            <h2>Bitcoin Search History</h2>
-            <ul>
-              {this.state.addressesArr.map(item => <li key={item}>{item}</li>)}
-            </ul>
-          </div>
+          <AddressHistoryList
+            updateAddressArr={this.updateAddressArr}
+            updateAddressObj={this.updateAddressObj}
+            addressesArr={this.state.addressesArr}
+          />
         </div>
         <div>
           Icons made by{' '}
@@ -88,7 +96,6 @@ class App extends Component {
           <a
             href="http://creativecommons.org/licenses/by/3.0/"
             title="Creative Commons BY 3.0"
-            target="_blank"
           >
             CC 3.0 BY
           </a>

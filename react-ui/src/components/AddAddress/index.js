@@ -37,10 +37,13 @@ class AddAddress extends Component {
     if (this.btcValidator(this.state.address)) {
       // Alert Added
       alert('Bitcoin Address Added: ' + this.state.address);
+
       // Fetch Btc Data
       this.fetchBtcData(this.state.address);
+
       // Add Btc address to db history
       this.addAddressToDb(this.state.address);
+
       // Reset the address state
       this.setState({ address: '' });
       event.preventDefault();
@@ -64,9 +67,9 @@ class AddAddress extends Component {
 
   addAddressToDb(btcAddress) {
     axios
+      // .post(`http://localhost:5000/api/btcAddress/${btcAddress}`)
       .post(`/api/btcAddress/${btcAddress}`)
       .then(res => {
-        console.log('addAddressToDB Address = ' + btcAddress);
         this.addBtcAddress(btcAddress);
       });
   }
@@ -81,7 +84,8 @@ class AddAddress extends Component {
             type="text"
             value={this.state.address}
             onChange={this.handleChange}
-          /><br />
+          />
+          <br />
           <input type="submit" value="Submit" />
         </form>
       </div>
