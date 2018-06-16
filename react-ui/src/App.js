@@ -44,7 +44,7 @@ class App extends Component {
     this.state.addressesArr.push(address);
   }
 
-  render() {\
+  render() {
     return (
       <div className="App">
         <header className="App-header">
