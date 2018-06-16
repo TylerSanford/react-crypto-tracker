@@ -64,7 +64,7 @@ class AddAddress extends Component {
 
   addAddressToDb(btcAddress) {
     axios
-      .post(`http://localhost:5000/api/btcAddress/${btcAddress}`)
+      .post(`/api/btcAddress/${btcAddress}`)
       .then(res => {
         console.log('addAddressToDB Address = ' + btcAddress);
         this.addBtcAddress(btcAddress);
