@@ -22,11 +22,9 @@ class App extends Component {
     this.updateAddressObj = this.updateAddressObj.bind(this);
   }
 
-  // Pull previously searched addresses from Database
   componentDidMount() {
     // Fill Bitcoin Search History
     axios.get(`/api/btcAddress`).then(res => {
-      // const btcAddressArray = [];
       res.data.map(item => this.state.addressesArr.push(item.address));
     });
   }
@@ -37,7 +35,6 @@ class App extends Component {
   }
 
   updateAddressObj(obj) {
-    // console.log('updateAddressObj callback: ', JSON.stringify(obj));
     this.setState({ addressObj: obj });
     console.log(this.state.addressObj);
   }
@@ -47,8 +44,7 @@ class App extends Component {
     this.state.addressesArr.push(address);
   }
 
-  render() {
-    // console.log(this.state.addressObj);
+  render() {\
     return (
       <div className="App">
         <header className="App-header">

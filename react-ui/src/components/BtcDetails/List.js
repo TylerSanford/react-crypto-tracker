@@ -3,9 +3,6 @@ import React from 'react';
 function toFixed(num) {
     let re = new RegExp('^-?\\d+(?:\.\\d{0,' + (2 || -1) + '})?');
     return num.toString().match(re);
-    // let parts = match.toString().split(".");
-    // return match[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    // return match.join(".");
 }
 
 const List = props => {

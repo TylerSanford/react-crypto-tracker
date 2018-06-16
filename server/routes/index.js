@@ -7,13 +7,10 @@ router.get('/api', (req, res) => {
 });
 
 router.get('/api/btcAddress', (req, res) => {
-  // const { address } = req.body;
 
   db('btc_address_list')
     .then((records) => {
       res.status(200).json(records);
-      // console.log("Added to db!...");
-      // console.log(records);
     })
     .catch((err) => {
       res.status(500).json({ error: 'Database is empty..', err })
@@ -25,10 +22,7 @@ router.post('/api/btcAddress/:address', (req, res) => {
 
   db('btc_address_list')
     .insert(address)
-    // .returning(created_date)
     .then((records) => {
-      console.log("added address to db!");
-      console.log(records);
       res.status(200).json(records);
     })
     .catch((err) => {
@@ -37,13 +31,6 @@ router.post('/api/btcAddress/:address', (req, res) => {
         err,
       });
     })
-
 })
-
-// router.get('/info/:btcAddress', function(req, res) {
-//   const { btcAddress } = req.params;
-
-  
-// })
 
 module.exports = router;

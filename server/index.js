@@ -1,12 +1,10 @@
 const dotenv = require('dotenv');
-
 dotenv.load();
 
 const express = require('express');
 const path = require('path');
 const index = require('./routes/index');
 const axios = require('axios');
-const cors = require('cors');
 const http = require('http');
 const socketIo = require('socket.io');
 
@@ -15,16 +13,6 @@ const PORT = process.env.PORT;
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
-
-// const btcAddressRoutes = require('./routes/btcAddressRoutes');
-
-// app.use(
-//   cors({
-//     credentials: true,
-//     origin: [process.env.CLIENT_URL || CLIENT_URL],
-//     allowedHeaders: ['Content-Type', 'Authorization']
-//   })
-// );
 
 //CORS bypass
 app.use(function(req, res, next) {
@@ -57,8 +45,6 @@ const getBtcRate = async socket => {
   }
 };
 
-// app.use('/api/btcAddress', btcAddressRoutes);
-
 // Priority serve any static files.
 app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 
@@ -66,14 +52,5 @@ app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 app.get('*', function(request, response) {
   response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
 });
-
-// if (process.env.NODE_ENV === 'production') {
-//   app.get('*', (req, res) => {
-//     // Serve static files from the React app
-//     app.use(express.static(path.join(__dirname, 'client/build')));
-
-//     res.sendFile(path.join(__dirname + '/client/build/index.html'));
-//   });
-// }
 
 server.listen(PORT, () => console.log(`Listening on port ${PORT}`));
