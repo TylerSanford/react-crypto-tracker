@@ -6,7 +6,7 @@ import './style.css';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 
-class AddressHistoryList extends Component {
+class SearchHistory extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -59,4 +59,4 @@ class AddressHistoryList extends Component {
   }
 }
 
-export default AddressHistoryList;
+export default SearchHistory;

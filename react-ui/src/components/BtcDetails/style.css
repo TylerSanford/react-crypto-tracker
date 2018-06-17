@@ -5,3 +5,11 @@
   margin: 20px;
   
 }
+
+.btc-details-2x1 {
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}

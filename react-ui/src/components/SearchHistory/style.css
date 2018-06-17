@@ -5,10 +5,8 @@
 }
 
 .history-item {
-  /* text-decoration: underline; */
-  /* margin-bottom: 5px; */
   background-color: lightgray;
-  /* margin: 0px 0px 0px 0px; */
+  /* background-color: rgb(166,237,254); */
   padding: 4px 8px;
   font-family: 'Courier New', Courier, monospace;
   letter-spacing: 1px;

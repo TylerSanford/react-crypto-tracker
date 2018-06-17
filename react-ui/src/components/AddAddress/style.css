@@ -30,7 +30,12 @@
   border-bottom-left-radius: 20px;
   border: 0px;
   height: 40px;
+  outline: none;
 }
+
+/* .add-address-textbox:select {
+  outline: none;
+} */
 
 .add-address-button {
   border-top-right-radius: 20px;
@@ -41,5 +46,6 @@
   border: 0px;
   height: 42px;
   width: 20%;
-  border-left: 1px solid black;
+  border-left: 2px solid rgb(245,205,79);
+  outline: none;
 }

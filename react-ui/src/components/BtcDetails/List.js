@@ -3,16 +3,17 @@ import moment from 'moment';
 
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent';
 import Table from '@material-ui/core/Table';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
 
+import bitcoinLogo from '../../assets/images/bitcoin-logo.png';
+
+import './style.css';
+
 function toFixed(num) {
-  // let re = new RegExp('^-?\\d+(?:.\\d{0,' + (2 || -1) + '})?');
-  // return num.toString().match(re);
   return num.toLocaleString(
     'en-US',
     { style: 'decimal', maximumFractionDigits: 2, minimumFractionDigits: 2 }
@@ -20,8 +21,21 @@ function toFixed(num) {
   // return Number(outNumber.substring(0,(outNumber.indexOf('.') + 3)));
 }
 
-const style = {
+const cardStyle = {
   marginBottom: 10
+};
+
+const cardStyleFirst = {
+  width: '69%'
+};
+
+const cardStyleSecond = {
+  width: '29%',
+  justifyContent: 'center'
+};
+
+const transactionsStyle = {
+  fontSize: 10
 };
 
 const List = props => {
@@ -32,19 +46,28 @@ const List = props => {
 
   return (
     <div>
-      <Card style={style}>
-        <CardHeader title="Bitcoin Address Information" />
-        
-        {props.address}
-        <br />
-        <div style={{ borderWidth: 1 }}>
-          Balance: ₿ {balBtc}
+      <div className="btc-details-2x1">
+        <Card style={cardStyleFirst}>
+          <CardHeader title="Bitcoin Address Information" />
+
+          {props.address}
           <br />
-          Balance: $ {balUSDFixed}
-          <br />
-        </div>
-      </Card>
-      <Card style={style}>
+          <div style={{ borderWidth: 1 }}>
+            Balance: ₿ {balBtc}
+            <br />
+            Balance: $ {balUSDFixed}
+            <br />
+          </div>
+        </Card>
+        <Card style={cardStyleSecond}>
+          <CardHeader title="Bitcoin Rate" />
+          <div>
+            <img src={bitcoinLogo} height="32" width="32" />
+            {' = $' + props.btcRate}
+          </div>
+        </Card>
+      </div>
+      <Card style={cardStyle}>
         <CardHeader
           title={props.unconfirmed_n_tx + ' Unconfirmed Transactions'}
         />
@@ -61,11 +84,17 @@ const List = props => {
               {props.unconfirmedTransactions.map((item, i) => {
                 return (
                   <TableRow style={{ textAlign: 'left' }} key={i + 1}>
-                    <TableCell component="th" scope="row">
+                    <TableCell
+                      component="th"
+                      scope="row"
+                      style={transactionsStyle}
+                    >
                       {i + 1}
                     </TableCell>
-                    <TableCell>{item.value / 100000000}</TableCell>
-                    <TableCell>
+                    <TableCell style={transactionsStyle}>
+                      {item.value / 100000000}
+                    </TableCell>
+                    <TableCell style={transactionsStyle}>
                       {'$' + toFixed((item.value / 100000000) * props.btcRate)}
                     </TableCell>
                   </TableRow>
@@ -86,21 +115,31 @@ const List = props => {
                 <TableCell>Bitcoin</TableCell>
                 <TableCell>USD</TableCell>
                 <TableCell>Confirmed</TableCell>
+                <TableCell>Confirmations</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {props.transactions.map((item, i) => {
                 return (
-                  <TableRow style={{ textAlign: 'left' }} key={i + 1}>
-                    <TableCell component="th" scope="row">
+                  <TableRow key={i + 1}>
+                    <TableCell
+                      component="th"
+                      scope="row"
+                      style={transactionsStyle}
+                    >
                       {i + 1}
                     </TableCell>
-                    <TableCell>{item.value / 100000000}</TableCell>
-                    <TableCell>
+                    <TableCell style={transactionsStyle}>
+                      {item.value / 100000000}
+                    </TableCell>
+                    <TableCell style={transactionsStyle}>
                       {'$' + toFixed((item.value / 100000000) * props.btcRate)}
                     </TableCell>
-                    <TableCell>
+                    <TableCell style={transactionsStyle}>
                       {moment(item.confirmed).format('lll')}
+                    </TableCell>
+                    <TableCell style={transactionsStyle}>
+                      {item.confirmations}
                     </TableCell>
                   </TableRow>
                 );
