@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import logo from './assets/images/logo/lemonade.png';
+
+import bitcoinLogo from './assets/images/bitcoin-logo.png';
 import './App.css';
 import axios from 'axios';
 
@@ -70,6 +72,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <BtcRate updateBtcRate={this.updateBtcRate} />
+             <div className="bitcoin-logo-container">
+            <img className="bitcoin-logo" src={bitcoinLogo} />
+            {' = $' + this.state.btcRate}
+          </div>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Sam's Lemonade: Bitcoin Validator</h1>
@@ -83,12 +90,11 @@ class App extends Component {
               updateAddressObj={this.updateAddressObj}
               addBtcAddress={this.addBtcAddress}
             />
-            
           </Toolbar>
         </AppBar>
 
         <div className="body-container">
-          <BtcRate updateBtcRate={this.updateBtcRate} />
+          
 
           {/* If Object is not empty show details */}
           {Object.keys(this.state.addressObj).length > 0 && (
@@ -103,7 +109,7 @@ class App extends Component {
             addressesArr={this.state.addressesArr}
           />
         </div>
-        <div style={{fontSize: 10}}>
+        <div style={{fontSize: 8}}>
           Icons made by{' '}
           <a href="http://www.freepik.com" title="Freepik">
             Freepik

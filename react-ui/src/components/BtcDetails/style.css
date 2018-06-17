@@ -1,15 +1,53 @@
 .btc-details {
-  /* flex: 1; */
-  /* border: 1px solid black; */
   width: 60%;
   margin: 20px;
-  
 }
 
-.btc-details-2x1 {
-  /* border: 1px solid black; */
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 10px;
+.address-information-address {
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 1px;
+}
+
+.card-header {
+  color: green;
+}
+
+@media only screen and (max-width: 375px) {
+  .btc-details {
+    width: 100%;
+    margin: 10px 0 0 0;
+  }
+  .address-information-address {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (min-width: 375px) {
+  .btc-details {
+    width: 100%;
+    margin: 10px 0 0 0;
+  }
+  .address-information-address {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .btc-details {
+    width: 100%;
+    margin: 10px 0 0 0;
+  }
+  .address-information-address {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .btc-details {
+    max-width: 59%;
+    margin: 10px 0 0 10px;
+  }
+  .address-information-address {
+    font-size: 16px;
+  }
 }

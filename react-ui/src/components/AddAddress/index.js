@@ -84,6 +84,7 @@ class AddAddress extends Component {
             type="text"
             value={this.state.address}
             onChange={this.handleChange}
+            placeholder="Enter a Bitcoin address..."
           />
           <button className="add-address-button" type="submit" >Search</button>
         </form>

@@ -9,8 +9,6 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
 
-import bitcoinLogo from '../../assets/images/bitcoin-logo.png';
-
 import './style.css';
 
 function toFixed(num) {
@@ -22,16 +20,8 @@ function toFixed(num) {
 }
 
 const cardStyle = {
-  marginBottom: 10
-};
-
-const cardStyleFirst = {
-  width: '69%'
-};
-
-const cardStyleSecond = {
-  width: '29%',
-  justifyContent: 'center'
+  marginBottom: 10,
+  paddingBottom: 10
 };
 
 const transactionsStyle = {
@@ -46,27 +36,20 @@ const List = props => {
 
   return (
     <div>
-      <div className="btc-details-2x1">
-        <Card style={cardStyleFirst}>
-          <CardHeader title="Bitcoin Address Information" />
+      <Card style={cardStyle}>
+        <CardHeader className="card-header" title="Bitcoin Address Information" />
 
-          {props.address}
+        <div className="address-information-address">{props.address}</div>
+        <br />
+        <div>
+        Balance <br />
+          <div className="address-information-address">₿ {balBtc} </div>
           <br />
-          <div style={{ borderWidth: 1 }}>
-            Balance: ₿ {balBtc}
-            <br />
-            Balance: $ {balUSDFixed}
-            <br />
-          </div>
-        </Card>
-        <Card style={cardStyleSecond}>
-          <CardHeader title="Bitcoin Rate" />
-          <div>
-            <img src={bitcoinLogo} height="32" width="32" />
-            {' = $' + props.btcRate}
-          </div>
-        </Card>
-      </div>
+          <div className="address-information-address">$ {balUSDFixed} </div>
+          <br />
+        </div>
+      </Card>
+
       <Card style={cardStyle}>
         <CardHeader
           title={props.unconfirmed_n_tx + ' Unconfirmed Transactions'}

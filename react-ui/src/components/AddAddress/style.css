@@ -1,11 +1,7 @@
 .add-address {
-  /* height: 150px; */
-  /* margin: 50px; */
   display: flex;
-  
-  /* border: 1px solid black; */
   width: 100%;
-  background-color: rgb(245,205,79);
+  background-color: rgb(245, 205, 79);
   padding-bottom: 20px;
   padding-top: 20px;
   justify-content: center;
@@ -15,7 +11,6 @@
 }
 
 .add-address-search-container {
-  /* border: 1px solid pink; */
   width: 50%;
   height: 40px;
 }
@@ -33,9 +28,10 @@
   outline: none;
 }
 
-/* .add-address-textbox:select {
-  outline: none;
-} */
+.add-address-textbox:focus::-webkit-input-placeholder {
+  transition: opacity 0.5s 0.5s ease;
+  opacity: 0;
+}
 
 .add-address-button {
   border-top-right-radius: 20px;
@@ -46,6 +42,75 @@
   border: 0px;
   height: 42px;
   width: 20%;
-  border-left: 2px solid rgb(245,205,79);
+  border-left: 2px solid rgb(245, 205, 79);
   outline: none;
+}
+
+.add-address-button:hover {
+  color: #31ADC7;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 375px) {
+  .add-address-search-container {
+    width: 100%;
+  }
+  .add-address-button {
+    background-color: white;
+    vertical-align: middle;
+    padding-top: 0;
+  }
+  .add-address-textbox {
+    font-size: 10px;
+    border: 0;
+    vertical-align: middle;
+  }
+}
+
+@media only screen and (min-width: 375px) {
+  .add-address-search-container {
+    width: 100%;
+  }
+  .add-address-button {
+    background-color: white;
+    vertical-align: middle;
+  }
+  .add-address-textbox {
+    font-size: 12px;
+    border: 0;
+    vertical-align: middle;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .add-address-search-container {
+    width: 100%;
+  }
+  .add-address-button {
+    background-color: white;
+    vertical-align: middle;
+  }
+  .add-address-textbox {
+    font-size: 16px;
+    border: 0;
+    letter-spacing: 1.5px;
+    vertical-align: middle;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .add-address-search-container {
+    width: 60%;
+  }
+  .add-address-button {
+    background-color: white;
+    vertical-align: middle;
+    font-size: 14px;
+  }
+  .add-address-textbox {
+    font-size: 18px;
+    letter-spacing: 2px;
+    border: 0;
+    vertical-align: middle;
+  }
 }

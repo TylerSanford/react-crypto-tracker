@@ -6,15 +6,10 @@
   align-items: center;
   align-content: center;
   text-align: center;
-  
-}
-
-.App-Logo {
-  /* vertical-align: middle; */
 }
 
 .App-header {
-  background-color: rgb(245,205,79);
+  background-color: rgb(245, 205, 79);
   height: 200px;
   padding: 20px 0 20px 0;
   color: white;
@@ -25,19 +20,11 @@
   font-size: 1.5em;
 }
 
-.App-intro {
-  font-size: large;
-}
-
 .body-container {
-  /* border: 1px solid yellow; */
-  display:flex;
+  display: flex;
   width: 99%;
   justify-content: space-around;
-  
-  /* align-content: center; */
-  /* align-items: center; */
-  /* height: 100vh; */
+  margin-bottom: 20px;
 }
 
 .btc-search-history {
@@ -45,7 +32,91 @@
   width: 40%;
 }
 
-.bitcoin-price-container {
-  border: 1px solid black;
+.bitcoin-logo-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: white;
+}
 
+.bitcoin-logo {
+  vertical-align: middle;
+  height: 32px;
+  width: 32px;
+}
+
+@media only screen and (max-width: 375px) {
+  .App-header {
+    padding: 20px 0 0 0;
+  }
+  .body-container {
+    flex-direction: column;
+  }
+  .App-title {
+    font-size: 1.1em;
+  }
+  .bitcoin-logo-container {
+    font-size: 14px;
+  }
+  .bitcoin-logo {
+    height: 24px;
+    width: 24px;
+  }
+}
+
+@media only screen and (min-width: 375px) {
+  .App-header {
+    padding: 20px 0 0 0;
+  }
+  .body-container {
+    flex-direction: column;
+  }
+  .App-title {
+    font-size: 1.3em;
+  }
+  .bitcoin-logo-container {
+    font-size: 16px;
+  }
+  .bitcoin-logo {
+    height: 24px;
+    width: 24px;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .App-header {
+    padding: 20px 0 0 0;
+  }
+  .body-container {
+    flex-direction: column;
+  }
+  .App-title {
+    font-size: 1.4em;
+  }
+  .bitcoin-logo-container {
+    font-size: 16px;
+  }
+  .bitcoin-logo {
+    height: 24px;
+    width: 24px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .body-container {
+    flex-direction: row;
+  }
+  .App-title {
+    font-size: 1.5em;
+  }
+  .bitcoin-logo-container {
+    font-size: 18px;
+  }
+  .bitcoin-logo {
+    height: 32px;
+    width: 32px;
+  }
 }
