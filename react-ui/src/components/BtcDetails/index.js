@@ -28,7 +28,7 @@ class BtcDetails extends Component {
             unconfirmedTransactions={this.state.addressObj.unconfirmed_txrefs}
             unconfirmed_n_tx={this.state.addressObj.unconfirmed_n_tx}
             unconfirmed_balance={this.state.addressObj.unconfirmed_balance}
-            final_n_tx={this.state.addressObj.final_n_tx}
+            n_tx={this.state.addressObj.n_tx}
             btcRate={this.props.btcRate}
           />
         </div>

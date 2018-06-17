@@ -45,10 +45,10 @@ class AddressHistoryList extends Component {
           {this.state.addressesArr &&
             this.state.addressesArr.map((item, i) => {
               return (
-                <span>
+                <span key={item}>
                   {i % 2 == 0 ?
-                    <div key={item} className="history-item" onClick={() => this.fetchBtcData(item) }>{item}</div>
-                    : <div key={item} className="history-item-odd" onClick={() => this.fetchBtcData(item) }>{item}</div>
+                    <div className="history-item" onClick={() => this.fetchBtcData(item) }>{item}</div>
+                    : <div className="history-item-odd" onClick={() => this.fetchBtcData(item) }>{item}</div>
                   }
                   </span>
               );

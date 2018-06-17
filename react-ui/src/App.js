@@ -90,8 +90,16 @@ class App extends Component {
       // Callback update global state
       this.setState({ addressesArr: addressesArr.reverse() });
     });
-  }
 
+    axios
+      .get(`https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD`)
+      .then(res => {
+        this.setState({ btcRate: res.data.USD });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
   // Callback function to update "global" state of Address Search History
   updateAddressArr(array) {
     this.setState({ addressesArr: array });
@@ -120,13 +128,19 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Sam's Lemonade: Bitcoin Validator</h1>
         </header>
-        <AppBar style={{ backgroundColor: 'rgb(245,205,79)' }} position="static">
+        <AppBar
+          style={{ backgroundColor: 'rgb(245,205,79)' }}
+          position="static"
+        >
           <Toolbar>
             <AddAddress
               updateAddressObj={this.updateAddressObj}
               addBtcAddress={this.addBtcAddress}
             />
-          <div style={{display: 'flex', flexDirection: 'row'}}><img src={bitcoinLogo} height="24" width="24"/>{" " + this.state.btcRate}</div>
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+              <img src={bitcoinLogo} height="24" width="24" />
+              {' ' + this.state.btcRate}
+            </div>
           </Toolbar>
         </AppBar>
 
