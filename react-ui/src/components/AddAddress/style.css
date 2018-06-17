@@ -1,15 +1,45 @@
 .add-address {
-  border: 1px solid black;
   /* height: 150px; */
-  margin: 50px;
-  width: 80%;
+  /* margin: 50px; */
+  display: flex;
+  
+  /* border: 1px solid black; */
+  width: 100%;
+  background-color: rgb(245,205,79);
+  padding-bottom: 20px;
+  padding-top: 20px;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.add-address-search-container {
+  /* border: 1px solid pink; */
+  width: 50%;
+  height: 40px;
 }
 
 .add-address-textbox {
-  width: 400px;
-  height: 30px;
+  width: 79%;
   font-size: 16px;
   font-family: 'Courier New', Courier, monospace;
   text-align: center;
-  letter-spacing: 1px
+  letter-spacing: 1px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border: 0px;
+  height: 40px;
+}
+
+.add-address-button {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  color: rgb(74, 198, 224);
+  font-weight: bold;
+  font-size: 12px;
+  border: 0px;
+  height: 42px;
+  width: 20%;
+  border-left: 1px solid black;
 }

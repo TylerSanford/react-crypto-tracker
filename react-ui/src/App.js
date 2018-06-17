@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './assets/images/logo/lemonade.png';
+import bitcoinLogo from './assets/images/bitcoin-logo.png';
 import './App.css';
 import axios from 'axios';
 
@@ -8,6 +9,9 @@ import AddAddress from './components/AddAddress';
 import BtcDetails from './components/BtcDetails';
 import AddressHistoryList from './components/AddressHistoryList';
 
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +19,60 @@ class App extends Component {
     this.state = {
       btcRate: 'Loading...',
       addressesArr: [],
-      addressObj: {}
+      addressObj: {
+        address: '1NArHAFLdfQmq17P6Usyr2myD6eYoX4Rw',
+        total_received: 300591167555,
+        total_sent: 50000000,
+        balance: 300541167555,
+        unconfirmed_balance: 0,
+        final_balance: 300541167555,
+        n_tx: 3,
+        unconfirmed_n_tx: 0,
+        final_n_tx: 3,
+        txrefs: [
+          {
+            tx_hash:
+              '6b6015a413f43b41cd3de3b2b81e92613134e735826ef45c638a4be882e572b2',
+            block_height: 511403,
+            tx_input_n: -1,
+            tx_output_n: 0,
+            value: 300541167555,
+            ref_balance: 300541167555,
+            spent: false,
+            confirmations: 16384,
+            confirmed: '2018-03-01T02:23:10Z',
+            double_spend: false
+          },
+          {
+            tx_hash:
+              'eb97c8854d1ea7102948312514054e03b2f824e2bbcf39cb135b49efa1ea2b68',
+            block_height: 511402,
+            tx_input_n: 0,
+            tx_output_n: -1,
+            value: 50000000,
+            ref_balance: 0,
+            confirmations: 16385,
+            confirmed: '2018-03-01T02:03:42Z',
+            double_spend: false
+          },
+          {
+            tx_hash:
+              '6121784a0638c344f0a24c60f7bba743ca573baceb30a4c22eeb5235f9a6f654',
+            block_height: 511402,
+            tx_input_n: -1,
+            tx_output_n: 0,
+            value: 50000000,
+            ref_balance: 50000000,
+            spent: true,
+            spent_by:
+              'eb97c8854d1ea7102948312514054e03b2f824e2bbcf39cb135b49efa1ea2b68',
+            confirmations: 16385,
+            confirmed: '2018-03-01T02:03:42Z',
+            double_spend: false
+          }
+        ],
+        tx_url: 'https://api.blockcypher.com/v1/btc/main/txs/'
+      }
     };
 
     this.updateBtcRate = this.updateBtcRate.bind(this);
@@ -26,7 +83,7 @@ class App extends Component {
   componentDidMount() {
     // Fill Bitcoin Search History
     axios.get(`/api/btcAddress`).then(res => {
-    // axios.get(`http://localhost:5000/api/btcAddress`).then(res => {
+      // axios.get(`http://localhost:5000/api/btcAddress`).then(res => {
       const addressesArr = [];
       res.data.map(item => addressesArr.push(item.address));
 
@@ -62,14 +119,20 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Sam's Lemonade: Bitcoin Validator</h1>
-          <p>Global BTC Rate - {this.state.btcRate}</p>
         </header>
+        <AppBar style={{ backgroundColor: 'rgb(245,205,79)' }} position="static">
+          <Toolbar>
+            <AddAddress
+              updateAddressObj={this.updateAddressObj}
+              addBtcAddress={this.addBtcAddress}
+            />
+          <div style={{display: 'flex', flexDirection: 'row'}}><img src={bitcoinLogo} height="24" width="24"/>{" " + this.state.btcRate}</div>
+          </Toolbar>
+        </AppBar>
+
         <div className="body-container">
           <BtcRate updateBtcRate={this.updateBtcRate} />
-          <AddAddress
-            updateAddressObj={this.updateAddressObj}
-            addBtcAddress={this.addBtcAddress}
-          />
+
           {/* If Object is not empty show details */}
           {Object.keys(this.state.addressObj).length > 0 && (
             <BtcDetails

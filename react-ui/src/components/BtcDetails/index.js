@@ -14,11 +14,12 @@ class BtcDetails extends Component {
 
   componentWillReceiveProps(props) {
     this.setState({addressObj: props.addressObj});
+    // console.log(JSON.stringify(props.addressObj));
   }
 
   render() {
     return (
-      <div>
+      <div className="btc-details">
           <List
             key={this.state.addressObj.address}
             address={this.state.addressObj.address}

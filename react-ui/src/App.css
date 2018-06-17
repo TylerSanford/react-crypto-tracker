@@ -1,19 +1,27 @@
 .App {
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  
 }
 
-.App-logo {
-  /* animation: App-logo-spin infinite 20s linear; */
-  height: 80px;
+.App-Logo {
+  vertical-align: middle;
 }
 
 .App-header {
   background-color: rgb(245,205,79);
-  height: 150px;
-  padding: 20px;
+  height: 200px;
+  padding: 20px 0 20px 0;
   color: white;
+  width: 100%;
 }
+
+.app
 
 .App-title {
   font-size: 1.5em;
@@ -26,13 +34,20 @@
 .body-container {
   /* border: 1px solid yellow; */
   display:flex;
-  /* justify-content: center; */
-  flex-direction: column;
+  /* width: 100%; */
+  justify-content: space-around;
+  
   /* align-content: center; */
-  align-items: center;
+  /* align-items: center; */
   /* height: 100vh; */
 }
 
 .btc-search-history {
   border: 1px solid black;
+  width: 40%;
+}
+
+.bitcoin-price-container {
+  border: 1px solid black;
+
 }

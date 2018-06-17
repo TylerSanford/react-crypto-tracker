@@ -77,7 +77,7 @@ class AddAddress extends Component {
   render() {
     return (
       <div className="add-address">
-        Monitor a Bitcoin address!
+        <div className="add-address-search-container">
         <form onSubmit={this.handleSubmit}>
           <input
             className="add-address-textbox"
@@ -85,9 +85,9 @@ class AddAddress extends Component {
             value={this.state.address}
             onChange={this.handleChange}
           />
-          <br />
-          <input type="submit" value="Submit" />
+          <button className="add-address-button" type="submit" >Search</button>
         </form>
+        </div>
       </div>
     );
   }

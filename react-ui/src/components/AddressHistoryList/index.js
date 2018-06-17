@@ -3,6 +3,9 @@ import axios from 'axios';
 
 import './style.css';
 
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+
 class AddressHistoryList extends Component {
   constructor(props) {
     super(props);
@@ -36,11 +39,21 @@ class AddressHistoryList extends Component {
   render() {
     return (
       <div className="search-history-container">
-        <h2>Bitcoin Search History</h2>
-        <ul>
+      <Card>
+        <CardHeader title="Search History"/>
+        {/* <h2>Bitcoin Search History</h2> */}
           {this.state.addressesArr &&
-            this.state.addressesArr.map(item => <li key={item}><div className="history-item" onClick={() => this.fetchBtcData(item) }>{item}</div></li>)}
-        </ul>
+            this.state.addressesArr.map((item, i) => {
+              return (
+                <span>
+                  {i % 2 == 0 ?
+                    <div key={item} className="history-item" onClick={() => this.fetchBtcData(item) }>{item}</div>
+                    : <div key={item} className="history-item-odd" onClick={() => this.fetchBtcData(item) }>{item}</div>
+                  }
+                  </span>
+              );
+            })}
+        </Card>
       </div>
     );
   }
