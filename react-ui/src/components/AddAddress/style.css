@@ -11,7 +11,7 @@
 }
 
 .add-address-search-container {
-  width: 50%;
+  max-width: 580px;
   height: 40px;
 }
 

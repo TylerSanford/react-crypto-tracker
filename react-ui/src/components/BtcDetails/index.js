@@ -10,6 +10,7 @@ class BtcDetails extends Component {
     this.state = {
       addressObj: this.props.addressObj
     }
+    this.updateAddressObj = this.props.updateAddressObj.bind(this);
   }
 
   componentWillReceiveProps(props) {
@@ -29,6 +30,7 @@ class BtcDetails extends Component {
             unconfirmed_balance={this.state.addressObj.unconfirmed_balance}
             n_tx={this.state.addressObj.n_tx}
             btcRate={this.props.btcRate}
+            updateAddressObj={this.updateAddressObj}
           />
         </div>
     )

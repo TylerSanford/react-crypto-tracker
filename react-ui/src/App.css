@@ -8,6 +8,10 @@
   text-align: center;
 }
 
+.App-logo {
+  cursor: pointer;
+}
+
 .App-header {
   background-color: rgb(245, 205, 79);
   height: 200px;

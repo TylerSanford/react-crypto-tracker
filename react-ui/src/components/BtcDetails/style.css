@@ -36,6 +36,26 @@ table th {
   background-color: lightgrey;
 }
 
+.close-box-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-box {
+  box-sizing: border-box;
+  width: 25px;
+  height: 25px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: rgb(244, 141, 40);
+  /* border-radius:100%; */
+  background: -webkit-linear-gradient(-45deg, transparent 0%, transparent 46%, white 46%, white 56%, transparent 56%, transparent 100%), -webkit-linear-gradient(45deg, transparent 0%, transparent 46%, white 46%, white 56%, transparent 56%, transparent 100%);
+  background-color: rgb(244, 141, 40);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 375px) {
   .btc-details {
     width: 100%;

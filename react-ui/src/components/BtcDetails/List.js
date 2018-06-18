@@ -27,6 +27,12 @@ const List = props => {
   return (
     <div>
       <Card style={cardStyle}>
+        <div className="close-box-container">
+          <div
+            className="close-box"
+            onClick={() => props.updateAddressObj({})}
+          />
+        </div>
         <CardHeader
           className="card-header"
           title="Bitcoin Address Information"
@@ -49,48 +55,52 @@ const List = props => {
         />
         {props.unconfirmed_n_tx > 0 && (
           <table className="transaction-table">
-            <tr className="transaction-table-row-header">
-              <th>#</th>
-              <th>Bitcoin</th>
-              <th>USD</th>
-            </tr>
-            {props.unconfirmedTransactions.map((item, i) => {
-              return (
-                <tr key={i + 1} className="transaction-table-row">
-                  <th>{i + 1}</th>
-                  <th>{item.value / 100000000}</th>
-                  <th>
-                    {'$' + toFixed((item.value / 100000000) * props.btcRate)}
-                  </th>
-                </tr>
-              );
-            })}
+            <tbody>
+              <tr className="transaction-table-row-header">
+                <th>#</th>
+                <th>Bitcoin</th>
+                <th>USD</th>
+              </tr>
+              {props.unconfirmedTransactions.map((item, i) => {
+                return (
+                  <tr key={i + 1} className="transaction-table-row">
+                    <th>{i + 1}</th>
+                    <th>{item.value / 100000000}</th>
+                    <th>
+                      {'$' + toFixed((item.value / 100000000) * props.btcRate)}
+                    </th>
+                  </tr>
+                );
+              })}
+            </tbody>
           </table>
         )}
       </Card>
 
-      <Card>
+      <Card style={cardStyle}>
         <CardHeader title={props.n_tx + ' Confirmed Transactions'} />
         {props.n_tx > 0 && (
           <table className="transaction-table">
-            <tr className="transaction-table-row-header">
-              <th>#</th>
-              <th>Bitcoin</th>
-              <th>USD</th>
-              <th>Confirmations</th>
-            </tr>
-            {props.transactions.map((item, i) => {
-              return (
-                <tr key={i + 1} className="transaction-table-row">
-                  <th>{i + 1}</th>
-                  <th>{item.value / 100000000}</th>
-                  <th>
-                    {'$' + toFixed((item.value / 100000000) * props.btcRate)}
-                  </th>
-                  <th>{item.confirmations}</th>
-                </tr>
-              );
-            })}
+            <tbody>
+              <tr className="transaction-table-row-header">
+                <th>#</th>
+                <th>Bitcoin</th>
+                <th>USD</th>
+                <th>Confirmations</th>
+              </tr>
+              {props.transactions.map((item, i) => {
+                return (
+                  <tr key={i + 1} className="transaction-table-row">
+                    <th>{i + 1}</th>
+                    <th>{item.value / 100000000}</th>
+                    <th>
+                      {'$' + toFixed((item.value / 100000000) * props.btcRate)}
+                    </th>
+                    <th>{item.confirmations}</th>
+                  </tr>
+                );
+              })}
+            </tbody>
           </table>
         )}
       </Card>

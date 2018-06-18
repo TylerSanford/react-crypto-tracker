@@ -7,10 +7,10 @@ module.exports = {
   useNullAsDefault: true,
   migrations: {
     tableName: 'dbmigrations',
-    directory: './database/migrations',
+    directory: './database/migrations'
   },
   seeds: {
-    directory: './database/seeds',
+    directory: './database/seeds'
   },
   ssl: true
 };

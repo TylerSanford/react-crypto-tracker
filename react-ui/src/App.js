@@ -77,7 +77,7 @@ class App extends Component {
           {' = $' + this.state.btcRate}
         </div>
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={logo} className="App-logo" alt="logo" onClick={() => this.setState({addressObj: {}})} />
           <h1 className="App-title">Sam's Lemonade: Bitcoin Validator</h1>
         </header>
         <AppBar
@@ -98,6 +98,7 @@ class App extends Component {
             <BtcDetails
               addressObj={this.state.addressObj}
               btcRate={this.state.btcRate}
+              updateAddressObj={this.updateAddressObj}
             />
           )}
           <SearchHistory
