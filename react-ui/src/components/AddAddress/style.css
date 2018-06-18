@@ -105,15 +105,4 @@
   .add-address-search-container {
     width: 60%;
   }
-  .add-address-button {
-    background-color: white;
-    vertical-align: middle;
-    font-size: 14px;
-  }
-  .add-address-textbox {
-    font-size: 18px;
-    letter-spacing: 2px;
-    border: 0;
-    vertical-align: middle;
-  }
 }
