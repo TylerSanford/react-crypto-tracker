@@ -66,28 +66,27 @@ class AddAddress extends Component {
   }
 
   addAddressToDb(btcAddress) {
-    axios
-      // .post(`http://localhost:5000/api/btcAddress/${btcAddress}`)
-      .post(`/api/btcAddress/${btcAddress}`)
-      .then(res => {
-        this.addBtcAddress(btcAddress);
-      });
+    axios.post(`/api/btcAddress/${btcAddress}`).then(res => {
+      this.addBtcAddress(btcAddress);
+    });
   }
 
   render() {
     return (
       <div className="add-address">
         <div className="add-address-search-container">
-        <form onSubmit={this.handleSubmit}>
-          <input
-            className="add-address-textbox"
-            type="text"
-            value={this.state.address}
-            onChange={this.handleChange}
-            placeholder="Enter a Bitcoin address..."
-          />
-          <button className="add-address-button" type="submit" >Search</button>
-        </form>
+          <form onSubmit={this.handleSubmit}>
+            <input
+              className="add-address-textbox"
+              type="text"
+              value={this.state.address}
+              onChange={this.handleChange}
+              placeholder="Enter a Bitcoin address..."
+            />
+            <button className="add-address-button" type="submit">
+              Search
+            </button>
+          </form>
         </div>
       </div>
     );

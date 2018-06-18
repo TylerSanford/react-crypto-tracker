@@ -1,3 +1,8 @@
+table th {
+  padding: 0 15px 0 15px;
+  font-weight: normal;
+}
+
 .btc-details {
   width: 60%;
   margin: 20px;
@@ -12,13 +17,39 @@
   color: green;
 }
 
+.transaction-table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.transaction-table-row-header {
+  font-size: 20px;
+}
+
+.transaction-table-row {
+  font-size: 10px;
+}
+
+.transaction-table-row:nth-child(even) {
+  background-color: lightgrey;
+}
+
 @media only screen and (max-width: 375px) {
   .btc-details {
     width: 100%;
     margin: 10px 0 0 0;
   }
   .address-information-address {
-    font-size: 12px;
+    font-size: 16px;
+  }
+  .transaction-table-row-header {
+    font-size: 14px;
+  }
+  .transaction-table-row {
+    font-size: 11px;
+    height: 15px;
   }
 }
 
@@ -30,6 +61,13 @@
   .address-information-address {
     font-size: 16px;
   }
+  .transaction-table-row-header {
+    font-size: 16px;
+  }
+  .transaction-table-row {
+    font-size: 12px;
+    height: 20px;
+  }
 }
 
 @media only screen and (min-width: 600px) {
@@ -40,6 +78,13 @@
   .address-information-address {
     font-size: 16px;
   }
+  .transaction-table-row-header {
+    font-size: 18px;
+  }
+  .transaction-table-row {
+    font-size: 13px;
+    height: 25px;
+  }
 }
 
 @media only screen and (min-width: 992px) {
@@ -49,5 +94,12 @@
   }
   .address-information-address {
     font-size: 16px;
+  }
+  .transaction-table-row-header {
+    font-size: 20px;
+  }
+  .transaction-table-row {
+    font-size: 14px;
+    height: 30px;
   }
 }

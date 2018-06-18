@@ -53,4 +53,4 @@ app.get('*', function(request, response) {
   response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
 });
 
-server.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+server.listen(PORT,() => console.log(`Listening on port ${PORT}`));

@@ -77,8 +77,11 @@
   }
   .add-address-textbox {
     font-size: 12px;
-    border: 0;
+    padding: 1px;
     vertical-align: middle;
+    max-width: 75%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
   }
 }
 

@@ -14,7 +14,6 @@ class BtcDetails extends Component {
 
   componentWillReceiveProps(props) {
     this.setState({addressObj: props.addressObj});
-    // console.log(JSON.stringify(props.addressObj));
   }
 
   render() {

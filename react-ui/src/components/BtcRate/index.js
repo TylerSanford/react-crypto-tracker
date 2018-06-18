@@ -13,7 +13,7 @@ class BtcRate extends Component {
     const socket = socketIOClient();
 
     // Send BTC Rate to parent state
-    socket.on('FromAPI', data => this.updateBtcRate(data));
+    socket.on('FromAPI2', data => this.updateBtcRate(data));
   }
 
   componentDidMount() {

@@ -17,11 +17,10 @@ class SearchHistory extends Component {
     this.updateAddressObj = this.props.updateAddressObj.bind(this);
 
     this.fetchBtcData = this.fetchBtcData.bind(this);
-    // this.getDetailsFromHistory = this.getDetailsFromHistory.bind(this);
   }
 
   componentWillReceiveProps(props) {
-    this.setState({addressesArr: props.addressesArr})
+    this.setState({ addressesArr: props.addressesArr });
   }
 
   fetchBtcData(btcAddress) {
@@ -39,18 +38,28 @@ class SearchHistory extends Component {
   render() {
     return (
       <div className="search-history-container">
-      <Card>
-        <CardHeader title="Search History"/>
-        {/* <h2>Bitcoin Search History</h2> */}
+        <Card>
+          <CardHeader title="Search History" />
           {this.state.addressesArr &&
             this.state.addressesArr.map((item, i) => {
               return (
                 <span key={item}>
-                  {i % 2 == 0 ?
-                    <div className="history-item" onClick={() => this.fetchBtcData(item) }>{item}</div>
-                    : <div className="history-item-odd" onClick={() => this.fetchBtcData(item) }>{item}</div>
-                  }
-                  </span>
+                  {i % 2 === 0 ? (
+                    <div
+                      className="history-item"
+                      onClick={() => this.fetchBtcData(item)}
+                    >
+                      {item}
+                    </div>
+                  ) : (
+                    <div
+                      className="history-item-odd"
+                      onClick={() => this.fetchBtcData(item)}
+                    >
+                      {item}
+                    </div>
+                  )}
+                </span>
               );
             })}
         </Card>

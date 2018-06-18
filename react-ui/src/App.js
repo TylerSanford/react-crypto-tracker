@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import logo from './assets/images/logo/lemonade.png';
-
 import bitcoinLogo from './assets/images/bitcoin-logo.png';
-import './App.css';
 import axios from 'axios';
 
 import BtcRate from './components/BtcRate';
@@ -12,6 +10,8 @@ import SearchHistory from './components/SearchHistory';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+
+import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -31,7 +31,6 @@ class App extends Component {
   componentDidMount() {
     // Fill Bitcoin Search History
     axios.get(`/api/btcAddress`).then(res => {
-      // axios.get(`http://localhost:5000/api/btcAddress`).then(res => {
       const addressesArr = [];
       res.data.map(item => addressesArr.push(item.address));
 
@@ -72,11 +71,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <BtcRate updateBtcRate={this.updateBtcRate} />
-             <div className="bitcoin-logo-container">
-            <img className="bitcoin-logo" src={bitcoinLogo} />
-            {' = $' + this.state.btcRate}
-          </div>
+        <BtcRate updateBtcRate={this.updateBtcRate} />
+        <div className="bitcoin-logo-container">
+          <img className="bitcoin-logo" src={bitcoinLogo} alt="bitcoin-logo" />
+          {' = $' + this.state.btcRate}
+        </div>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Sam's Lemonade: Bitcoin Validator</h1>
@@ -94,8 +93,6 @@ class App extends Component {
         </AppBar>
 
         <div className="body-container">
-          
-
           {/* If Object is not empty show details */}
           {Object.keys(this.state.addressObj).length > 0 && (
             <BtcDetails
@@ -109,7 +106,7 @@ class App extends Component {
             addressesArr={this.state.addressesArr}
           />
         </div>
-        <div style={{fontSize: 8}}>
+        <div style={{ fontSize: 8 }}>
           Icons made by{' '}
           <a href="http://www.freepik.com" title="Freepik">
             Freepik
