@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './assets/images/logo/lemonade.png';
 import bitcoinLogo from './assets/images/bitcoin-logo.png';
 import axios from 'axios';
+import ReactGA from 'react-ga';
 
 import BtcRate from './components/BtcRate';
 import AddAddress from './components/AddAddress';
@@ -12,6 +13,9 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 
 import './App.css';
+
+ReactGA.initialize('UA-121220942-1');
+ReactGA.pageview('/');
 
 class App extends Component {
   constructor(props) {
